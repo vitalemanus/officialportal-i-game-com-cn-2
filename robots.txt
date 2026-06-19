@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vitalemanus.github.io/officialportal-i-game-com-cn-2/sitemap.xml

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>彩经网 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #f2f4f8;
+      color: #1e1f2a;
+      line-height: 1.7;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: #0c0f1a;
+      background-image: radial-gradient(circle at 20% 40%, #1d253b 0%, #080b12 90%);
+      padding: 3.5rem 1.5rem 4rem;
+      text-align: center;
+      border-bottom: 4px solid #eab308;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #f9fafc;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: #b0b8ce;
+    }
+
+    .hero .tagline {
+      margin-top: 1.2rem;
+      display: inline-block;
+      background: #eab30820;
+      color: #eab308;
+      padding: 0.3rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid #eab30840;
+    }
+
+    /* 浅色正文区 */
+    .main-wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 2.4rem 1.5rem 3.5rem;
+    }
+
+    /* 目录感布局 —— 卡片网格 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.6rem 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.2s;
+      border: 1px solid #eff1f5;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #0c0f1a;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3 .icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .card p {
+      font-size: 0.97rem;
+      color: #3a3e4e;
+    }
+
+    .card a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .card a:hover {
+      border-bottom-color: #2563eb;
+    }
+
+    /* 说明区 & 提示区 风格 */
+    .info-panel {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.2rem;
+      border-left: 5px solid #eab308;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    }
+
+    .info-panel h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: #0c0f1a;
+    }
+
+    .info-panel p {
+      color: #2f3342;
+    }
+
+    .info-panel a {
+      color: #2563eb;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .info-panel a:hover {
+      text-decoration: none;
+      background: #2563eb10;
+    }
+
+    /* 提示区 (带背景色) */
+    .tip-box {
+      background: #f0f3fe;
+      border-radius: 18px;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0 1.8rem;
+      border: 1px solid #d9e0f0;
+    }
+
+    .tip-box h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1e2b5e;
+      margin-bottom: 0.4rem;
+    }
+
+    .tip-box p {
+      color: #2b3356;
+      font-size: 0.96rem;
+    }
+
+    /* FAQ 摘要区域 */
+    .faq-mini {
+      margin-top: 2rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.2rem 1.6rem;
+      margin-bottom: 1rem;
+      border: 1px solid #e6e9f0;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #0c0f1a;
+    }
+
+    .faq-item p {
+      font-size: 0.94rem;
+      color: #3b4053;
+    }
+
+    .faq-item p a {
+      color: #2563eb;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .faq-item p a:hover {
+      color: #1e4bb8;
+    }
+
+    /* 底部信息 */
+    .footer-note {
+      text-align: center;
+      margin-top: 3.5rem;
+      font-size: 0.85rem;
+      color: #5d637a;
+      border-top: 1px solid #dddfe7;
+      padding-top: 2rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .main-wrap {
+        padding: 1.5rem 1rem 2.5rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+      .info-panel {
+        padding: 1.3rem 1.2rem;
+      }
+      .tip-box {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>知识 · 视野 · 日常</h1>
+    <p>围绕主题内容展开的信息聚合，帮你更快找到感兴趣的方向。</p>
+    <span class="tagline">专注内容本身 · 彩经网</span>
+  </header>
+
+  <!-- 浅色正文区 目录感卡片 -->
+  <div class="main-wrap">
+
+    <div class="grid-cards">
+      <div class="card">
+        <h3><span class="icon">📖</span> 主题背景</h3>
+        <p>从关键词展开，理解背后的知识脉络。无论是概念梳理还是日常应用，<a href="https://site-cjcp.com">彩经网</a>都提供结构化的参考内容。</p>
+      </div>
+      <div class="card">
+        <h3><span class="icon">🧩</span> 应用场景</h3>
+        <p>适合个人查阅、兴趣拓展以及轻量级的信息整理。你可以把这里当作一个安静的起点，逐步深入感兴趣的领域。</p>
+      </div>
+      <div class="card">
+        <h3><span class="icon">🔗</span> 相关内容</h3>
+        <p>内容围绕基础知识、常见问题与实用提示展开，避免冗杂信息。你会在不同板块里发现彼此关联的细节。</p>
+      </div>
+    </div>
+
+    <!-- 说明区 -->
+    <div class="info-panel">
+      <h2>说明</h2>
+      <p>本页面以知识库入口的形式组织信息，将关键词背后的主题内容拆解为几个模块。每个模块都尽力保持独立且可读，方便你根据自己的节奏浏览。如果你对某个话题有更深的兴趣，可以通过 <a href="https://site-cjcp.com">彩经网</a> 找到更多纵向延伸的内容。这里没有强推销，只有实在的整理。</p>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="tip-box">
+      <h3>💡 一点提示</h3>
+      <p>浏览时可以试着先看目录卡片，再读说明与 FAQ，这样更容易形成整体印象。如果你发现某个话题恰好契合自己的需要，直接点击文中链接就好。内容保持中立，不引导、不渲染，请放心使用。</p>
+    </div>
+
+    <!-- FAQ 摘要 (自然嵌入信息) -->
+    <div class="faq-mini">
+      <div class="faq-item">
+        <strong>这个页面主要提供什么？</strong>
+        <p>围绕关键词给出知识库式的入口，包含背景、场景和相关提示。你可以在 <a href="https://site-cjcp.com">彩经网</a> 找到更多类似的整理内容。</p>
+      </div>
+      <div class="faq-item">
+        <strong>内容适合什么样的人？</strong>
+        <p>适合日常想快速了解某个主题，又不想被广告或夸张宣传干扰的人。内容风格偏生活化，但同时保持结构清晰，便于参考。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否会持续更新？</strong>
+        <p>页面结构和内容会根据方向定期调整，保持新鲜感和差异度。当前版本侧重目录感布局与分散的知识点，未来可能增加更多互动元素。</p>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <span>知识库入口 · 内容由主题驱动</span>
+    </div>
+  </div>
+
+</body>
+</html>
